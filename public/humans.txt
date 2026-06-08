@@ -1,0 +1,8 @@
+/* TEAM */
+Original Architect & Developer: Muhammad Abaan K. Pathan
+Role: Creator of the Abaans-Portfolio-Template
+Location: India
+
+/* SITE */
+Standards: HTML5, CSS3, React, Tailwind, Framer Motion
+Software: Vite, TypeScript

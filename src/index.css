@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Claude / Anthropic Inspired - Elegant Light Cream */
+    --background: 42 33% 96%; /* Very soft warm cream (#F9F8F4) */
+    --foreground: 30 15% 15%; /* Deep warm charcoal */
+
+    --card: 42 40% 98%;
+    --card-foreground: 30 15% 15%;
+
+    --popover: 42 40% 98%;
+    --popover-foreground: 30 15% 15%;
+
+    /* Brand - Muted Sage Green */
+    --primary: 150 25% 45%; 
+    --primary-foreground: 42 33% 96%;
+
+    /* Secondary - Slightly darker cream */
+    --secondary: 42 20% 90%;
+    --secondary-foreground: 30 15% 15%;
+
+    --muted: 42 20% 90%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Accent - Soft Creamish Orange / Peach */
+    --accent: 24 75% 65%; 
+    --accent-foreground: 42 33% 96%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 42 33% 96%;
+
+    --border: 42 20% 85%;
+    --input: 42 20% 85%;
+    --ring: 150 25% 45%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 42 33% 94%;
+    --sidebar-foreground: 30 15% 25%;
+    --sidebar-primary: 150 25% 45%;
+    --sidebar-primary-foreground: 42 33% 96%;
+    --sidebar-accent: 42 20% 88%;
+    --sidebar-accent-foreground: 30 15% 15%;
+    --sidebar-border: 42 20% 80%;
+    --sidebar-ring: 150 25% 45%;
+
+    /* Elegant, soft gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(150 25% 45%) 0%, hsl(24 75% 65%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(42 33% 98%) 0%, hsl(42 25% 94%) 100%);
+    --shadow-elegant: 0 10px 40px -10px hsl(30 15% 15% / 0.08);
+    --shadow-soft: 0 4px 20px hsl(30 15% 15% / 0.04);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Deep Warm Charcoal/Brown */
+    --background: 30 12% 12%; 
+    --foreground: 42 33% 92%;
+
+    --card: 30 12% 14%;
+    --card-foreground: 42 33% 92%;
+
+    --popover: 30 12% 12%;
+    --popover-foreground: 42 33% 92%;
+
+    /* Brand - Soft Sage Green */
+    --primary: 150 25% 55%; 
+    --primary-foreground: 30 12% 12%;
+
+    /* Secondary - Darker Warm Grey */
+    --secondary: 30 12% 18%;
+    --secondary-foreground: 42 33% 92%;
+
+    --muted: 30 12% 18%;
+    --muted-foreground: 30 10% 65%;
+
+    /* Accent - Soft Creamish Orange / Peach */
+    --accent: 24 70% 70%; 
+    --accent-foreground: 30 12% 12%;
+
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 42 33% 92%;
+
+    --border: 30 12% 20%;
+    --input: 30 12% 20%;
+    --ring: 150 25% 55%;
+
+    --sidebar-background: 30 12% 14%;
+    --sidebar-foreground: 30 10% 85%;
+    --sidebar-primary: 150 25% 55%;
+    --sidebar-primary-foreground: 30 12% 12%;
+    --sidebar-accent: 30 12% 18%;
+    --sidebar-accent-foreground: 42 33% 92%;
+    --sidebar-border: 30 12% 20%;
+    --sidebar-ring: 150 25% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(150 25% 55%) 0%, hsl(24 70% 70%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(30 12% 14%) 0%, hsl(30 12% 12%) 100%);
+    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.4);
+    --shadow-soft: 0 4px 20px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-transparent text-foreground; 
+    background-color: transparent !important;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    background-color: hsl(var(--background));
+  }
+}
+
+@layer utilities {
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .bg-gradient-surface {
+    background-image: var(--gradient-surface);
+  }
+  .btn-hero {
+    background-image: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-smooth);
+  }
+  .story-link {
+    background-image: linear-gradient(transparent calc(100% - 2px), hsl(var(--primary)) 2px);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position: left bottom;
+    transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .story-link:hover {
+    background-size: 100% 100%;
+  }
+  .hover-scale {
+    transition: transform 0.2s ease-out;
+  }
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-background/70 backdrop-blur-md border border-foreground/5;
+    box-shadow: var(--shadow-soft);
+  }
+  .glass-card {
+    @apply bg-background/60 backdrop-blur-xl border border-foreground/5 transition-all duration-300;
+    box-shadow: var(--shadow-elegant);
+  }
+  .glass-card:hover {
+    @apply border-primary/20 bg-background/80 translate-y-[-2px];
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.15);
+  }
+
+  /* Aurora Background */
+  .aurora-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    overflow: hidden;
+    background-color: hsl(var(--background));
+    pointer-events: none;
+  }
+  
+  .aurora-bg::before, .aurora-bg::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px); /* Increased blur for softer Claude-like look */
+    opacity: 0.25; 
+    animation: float 20s infinite ease-in-out alternate;
+  }
+
+  .aurora-bg::before {
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, hsl(var(--primary)) 0%, transparent 60%);
+    top: -10vw;
+    left: -10vw;
+    animation-delay: 0s;
+  }
+
+  .aurora-bg::after {
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(circle, hsl(var(--accent)) 0%, transparent 60%);
+    bottom: -10vw;
+    right: -10vw;
+    animation-duration: 25s;
+    animation-delay: -5s;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(3vw, 3vh) scale(1.05);
+    }
+    66% {
+      transform: translate(-3vw, 5vh) scale(0.95);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  /* Custom Scrollbars */
+  .custom-scrollbar::-webkit-scrollbar,
+  .custom-scrollbar *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track,
+  .custom-scrollbar *::-webkit-scrollbar-track {
+    background: #1e1e1e;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb,
+  .custom-scrollbar *::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    border: 2px solid #1e1e1e; /* matches track for padding effect */
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+  .custom-scrollbar *::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Specific scrollbar for light docs pane if needed */
+  .doc-scrollbar::-webkit-scrollbar,
+  .doc-scrollbar *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .doc-scrollbar::-webkit-scrollbar-track,
+  .doc-scrollbar *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .doc-scrollbar::-webkit-scrollbar-thumb,
+  .doc-scrollbar *::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    border: none;
+  }
+  .doc-scrollbar::-webkit-scrollbar-thumb:hover,
+  .doc-scrollbar *::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  /* Table of Contents Scrollbar */
+  .toc-scrollbar::-webkit-scrollbar,
+  .toc-scrollbar *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .toc-scrollbar::-webkit-scrollbar-track,
+  .toc-scrollbar *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .toc-scrollbar::-webkit-scrollbar-thumb,
+  .toc-scrollbar *::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.4);
+    border-radius: 4px;
+    border: none;
+  }
+  .toc-scrollbar::-webkit-scrollbar-thumb:hover,
+  .toc-scrollbar *::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 150, 150, 0.6);
+  }
+}
